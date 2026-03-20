@@ -1,0 +1,5 @@
+{
+  "name": "ET Future - The Personalized Newsroom",
+  "description": "A futuristic business news application featuring personalized newsrooms, interactive intelligence briefings, AI video generation, story arc tracking, and vernacular business news.",
+  "requestFramePermissions": ["camera", "microphone"]
+}
