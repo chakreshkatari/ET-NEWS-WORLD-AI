@@ -1,6 +1,13 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+// Support both Vite's standard import.meta.env (for Netlify) and process.env (for AI Studio)
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+
+if (!apiKey) {
+  console.error("API key is missing. Please set VITE_GEMINI_API_KEY in your Netlify environment variables.");
+}
+
+const ai = new GoogleGenAI({ apiKey: apiKey as string });
 
 export const generatePersonalizedFeed = async (persona: string, newsItems: string[]) => {
   const prompt = `You are a personalized AI news editor for a ${persona}.
